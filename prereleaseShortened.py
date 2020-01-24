@@ -46,7 +46,7 @@ while not exit:
 
     for i in range(len(subPurchase)):
         for x in subPurchase[i]:
-            print("[{0}] {1} ({2}$)" .format(data[i][0][x], data[i][1][x], data[i][2][x]))
+            if data[x][0][i] != "NONE": print("[{0}] {1} ({2}$)" .format(data[i][0][x], data[i][1][x], data[i][2][x]))
 
     print("\nSubtotal: %.2f$" % (subtotal * discount))
     if tempSaved != 0: print("Saved: %.2f$" % tempSaved)

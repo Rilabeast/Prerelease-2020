@@ -26,7 +26,7 @@ while not exit:
     subtotal = 0
 
     for i in range(len(devices[0])):
-        print("'{0}' - {1} ({2}$)" .format(i, devices[1][i], devices[2][i]))
+        print("'{0}' : {1} ({2}$)" .format(i, devices[1][i], devices[2][i]))
     print()
     devChoice = -1
     while devChoice < 0 or devChoice >= len(devices[0]):
@@ -40,7 +40,7 @@ while not exit:
     print()
 
     for i in range(len(sim[0])):
-        print("'{0}' - {1} ({2}$)" .format(i, sim[1][i], sim[2][i]))
+        print("'{0}' : {1} ({2}$)" .format(i, sim[1][i], sim[2][i]))
     print()
     simChoice = -1
     while simChoice < 0 or simChoice >= len(case[0]):
@@ -54,7 +54,7 @@ while not exit:
     print()
 
     for i in range(len(case[0])):
-        print("'{0}' - {1} ({2}$)" .format(i, case[1][i], case[2][i]))
+        print("'{0}' : {1} ({2}$)" .format(i, case[1][i], case[2][i]))
     print()
     caseChoice = -1
     while caseChoice < 0 or caseChoice >= len(case[0]):
@@ -67,7 +67,7 @@ while not exit:
     subPurchase[2].append(caseChoice)
     print()
 
-    print("'0' - Car (19.99$)\n'1' - Home (15.99$)\n'2' - Both (35.98$)\n'3' - None (0$)")
+    print("'0' : Car (19.99$)\n'1' : Home (15.99$)\n'2' : Both (35.98$)\n'3' : None (0$)")
     print()
     chargerChoice = -1
     while chargerChoice < 0 or chargerChoice >= 4:
@@ -90,16 +90,16 @@ while not exit:
     print("\n")
 
     for i in subPurchase[0]:
-        print("{0} - {1} ({2}$)" .format(devices[0][i], devices[1][i], devices[2][i]))
+        print("[{0}] {1} ({2}$)" .format(devices[0][i], devices[1][i], devices[2][i]))
 
     for i in subPurchase[1]:
-        print("{0} - {1} ({2}$)" .format(sim[0][i], sim[1][i], sim[2][i]))
+        print("[{0}] {1} ({2}$)" .format(sim[0][i], sim[1][i], sim[2][i]))
 
     for i in subPurchase[2]:
-        print("{0} - {1} ({2}$)" .format(case[0][i], case[1][i], case[2][i]))
+        print("[{0}] {1} ({2}$)" .format(case[0][i], case[1][i], case[2][i]))
 
     for i in subPurchase[3]:
-        print("{0} - {1} ({2}$)" .format(charger[0][i], charger[1][i], charger[2][i]))
+        print("[{0}] {1} ({2}$)" .format(charger[0][i], charger[1][i], charger[2][i]))
 
     exit = input("\n\ntype 'y' to order another device with a 10% discount or anything else to exit: ") != 'y'
     print("\n\n")
@@ -107,16 +107,16 @@ while not exit:
 print()
 
 for i in purchase[0]:
-    print("{0} - {1} ({2}$)" .format(devices[0][i], devices[1][i], devices[2][i]))
+    print("[{0}] {1} ({2}$)" .format(devices[0][i], devices[1][i], devices[2][i]))
 
 for i in purchase[1]:
-    print("{0} - {1} ({2}$)" .format(sim[0][i], sim[1][i], sim[2][i]))
+    print("[{0}] {1} ({2}$)" .format(sim[0][i], sim[1][i], sim[2][i]))
 
 for i in purchase[2]:
-    print("{0} - {1} ({2}$)" .format(case[0][i], case[1][i], case[2][i]))
+    print("[{0}] {1} ({2}$)" .format(case[0][i], case[1][i], case[2][i]))
 
 for i in purchase[3]:
-    print("{0} - {1} ({2}$)" .format(charger[0][i], charger[1][i], charger[2][i]))
+    print("[{0}] {1} ({2}$)" .format(charger[0][i], charger[1][i], charger[2][i]))
 
 print("\nTotal: %.2f$" % total)
 print("Saved: %.2f$" % saved)
