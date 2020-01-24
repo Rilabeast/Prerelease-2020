@@ -26,7 +26,7 @@ while not exit:
     subtotal = 0
     for x in range(len(data)):
         for i in range(len(data[x][0])):
-            print("'{0}' : {1} ({2}$)" .format(i, data[x][1][i], data[x][2][i]))
+            print("'{0}' : {1} (%.2f$)" .format(i, data[x][1][i]) % data[x][2][i])
         print()
         choice = -1
         while choice < 0 or choice >= len(data[x][0]):
@@ -44,12 +44,12 @@ while not exit:
     saved += tempSaved
     print()
 
-    for i in range(len(subPurchase)):
-        for x in subPurchase[i]:
-            if data[x][0][i] != "NONE": print("[{0}] {1} ({2}$)" .format(data[i][0][x], data[i][1][x], data[i][2][x]))
+    for x in range(len(subPurchase)):
+        for i in subPurchase[x]:
+            if data[x][0][i] != "NONE": print("[{0}] {1} (%.2f$)" .format(data[x][0][i], data[x][1][i]) % data[x][2][i])
 
     print("\nSubtotal: %.2f$" % (subtotal * discount))
-    if tempSaved != 0: print("Saved: %.2f$" % tempSaved)
+    print("Saved: %.2f$" % tempSaved)
 
     discount = 0.9
     exit = input("\n\ntype 'y' to order another device with a 10% discount or anything else to exit: ") != 'y'
