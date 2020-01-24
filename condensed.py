@@ -2,8 +2,7 @@ data = [[["BPCM", "BPSH", "RPSS", "RPLL", "YPLS", "YPLL", "RTMS", "RTML", "YTLM"
 purchase = [[], [], [], []]
 total, saved, discount, exit = 0, 0, 1, False
 while not exit:
-    subPurchase = [[], [], [], []]
-    subtotal = 0
+    subPurchase, subtotal = [[], [], [], []], 0
     for x in range(len(data)):
         print("\n".join([("'{0}' : {1} (%.2f$)" .format(i, data[x][1][i]) % data[x][2][i]) for i in range(len(data[x][0]))]))
         choice = -1
