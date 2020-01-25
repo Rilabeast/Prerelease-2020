@@ -39,19 +39,20 @@ while not exit:
     subPurchase[0].append(devChoice)
     print()
 
-    for i in range(len(sim[0])):
-        print("'{0}' : {1} ({2}$)" .format(i, sim[1][i], sim[2][i]))
-    print()
-    simChoice = -1
-    while simChoice < 0 or simChoice >= len(case[0]):
-        try:
-            simChoice = int(input("Choice: "))
-        except ValueError:
-            pass
-    subtotal += sim[2][simChoice]
-    purchase[1].append(simChoice)
-    subPurchase[1].append(simChoice)
-    print()
+    if devChoice < 6:
+        for i in range(len(sim[0])):
+            print("'{0}' : {1} ({2}$)" .format(i, sim[1][i], sim[2][i]))
+        print()
+        simChoice = -1
+        while simChoice < 0 or simChoice >= len(case[0]):
+            try:
+                simChoice = int(input("Choice: "))
+            except ValueError:
+                pass
+        subtotal += sim[2][simChoice]
+        purchase[1].append(simChoice)
+        subPurchase[1].append(simChoice)
+        print()
 
     for i in range(len(case[0])):
         print("'{0}' : {1} ({2}$)" .format(i, case[1][i], case[2][i]))

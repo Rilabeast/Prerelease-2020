@@ -1,19 +1,26 @@
-data = [[["BPCM", "BPSH", "RPSS", "RPLL", "YPLS", "YPLL", "RTMS", "RTML", "YTLM", "YTLL"],
-         ["Compact", "Clam Shell", "RoboPhone - 5-inch screen and 64 GB memory", "RoboPhone - 6-inch screen and 256 GB memory", "Y-Phone Standard - 6-inch screen and 64 GB memory", "Y-Phone Deluxe - 6-inch screen and 128 GB memory", "RoboTab - 8-inch screen and 64 GB memory", "RoboTab - 10-inch screen and 128 GB memory", "Y-Tab Standard - 10-inch screen and 128 GB memory", "Y-Phone Deluxe - 10-inch screen and 256 GB memory"],
-         [29.99, 49.99, 199.99, 499.99, 549.99, 649.99, 149.99, 299.99, 499.99, 599.99]],
+### 0478/21/PRE/M/J/20 ###
 
-         [["SMNO", "SMPG"],
-         ["SIM Free (no SIM card purchased)", "Pay As You Go (SIM card purchased)"],
-         [0, 9.99]],
+## creating variables to store everything ##
+# variable that stores all of the data needed
+data = [[["BPCM", "BPSH", "RPSS", "RPLL", "YPLS", "YPLL", "RTMS", "RTML", "YTLM", "YTLL"], # [code]
+         ["Compact", "Clam Shell", "RoboPhone - 5-inch screen and 64 GB memory", "RoboPhone - 6-inch screen and 256 GB memory", "Y-Phone Standard - 6-inch screen and 64 GB memory", "Y-Phone Deluxe - 6-inch screen and 128 GB memory", "RoboTab - 8-inch screen and 64 GB memory", "RoboTab - 10-inch screen and 128 GB memory", "Y-Tab Standard - 10-inch screen and 128 GB memory", "Y-Phone Deluxe - 10-inch screen and 256 GB memory"], # description
+         [29.99, 49.99, 199.99, 499.99, 549.99, 649.99, 149.99, 299.99, 499.99, 599.99]], # [price]
+        ## devices
 
-         [["CSST", "CSLX"],
-         ["Standard", "Luxury"],
-         [0, 50]],
+        [["SMNO", "SMPG"], # [code]
+         ["SIM Free (no SIM card purchased)", "Pay As You Go (SIM card purchased)"], # [description]
+         [0, 9.99]], # [price]
+        ## SIM card options
 
-         [["CGCR", "CGHM", "CGCR][CGHM", "NONE"],
-         ["Car", "Home", "Car + Home", "None"],
-         [19.99, 15.99, 35.98, 0]]]
+        [["CSST", "CSLX"], # [code]
+         ["Standard", "Luxury"], # [description]
+         [0, 50]], # [price]
+        ## case options
 
+        [["CGCR", "CGHM", "CGCR][CGHM", "NONE"], # [code]
+         ["Car", "Home", "Car + Home", "None"], # [description]
+         [19.99, 15.99, 35.98, 0]]] # [price]
+        ## charger options
 
 purchase = [[], [], [], []] # list of positions [devices], [sim], [case], [charger]
 total = 0
@@ -24,7 +31,8 @@ exit = False
 while not exit:
     subPurchase = [[], [], [], []]
     subtotal = 0
-    for x in range(len(data)):
+    x = 0
+    while x < len(data):
         for i in range(len(data[x][0])):
             print("'{0}' : {1} (%.2f$)" .format(i, data[x][1][i]) % data[x][2][i])
         print()
@@ -38,6 +46,7 @@ while not exit:
         purchase[x].append(choice)
         subPurchase[x].append(choice)
         print()
+        x += 1 if (x == 0 and choice >= 6) else 2
 
     tempSaved = subtotal * (1 - discount)
     total += subtotal * discount
