@@ -1,3 +1,4 @@
+__author__ = "https://github.com/Rilabeast"
 data = [[["BPCM", "BPSH", "RPSS", "RPLL", "YPLS", "YPLL", "RTMS", "RTML", "YTLM", "YTLL"], ["Compact", "Clam Shell", "RoboPhone - 5-inch screen and 64 GB memory", "RoboPhone - 6-inch screen and 256 GB memory", "Y-Phone Standard - 6-inch screen and 64 GB memory", "Y-Phone Deluxe - 6-inch screen and 128 GB memory", "RoboTab - 8-inch screen and 64 GB memory", "RoboTab - 10-inch screen and 128 GB memory", "Y-Tab Standard - 10-inch screen and 128 GB memory", "Y-Phone Deluxe - 10-inch screen and 256 GB memory"], [29.99, 49.99, 199.99, 499.99, 549.99, 649.99, 149.99, 299.99, 499.99, 599.99]], [["SMNO", "SMPG"], ["SIM Free (no SIM card purchased)", "Pay As You Go (SIM card purchased)"], [0, 9.99]], [["CSST", "CSLX"], ["Standard", "Luxury"], [0, 50]], [["CGCR", "CGHM", "CGCR][CGHM", "NONE"], ["Car", "Home", "Car + Home", "None"], [19.99, 15.99, 35.98, 0]]]
 purchase = [[], [], [], []]
 total, saved, discount, exit = 0, 0, 1, False
