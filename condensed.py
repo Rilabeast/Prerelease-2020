@@ -11,12 +11,11 @@ while not exit:
         while choice < 0 or choice >= len(data[x][0]):
             try: choice = int(input("\nChoice: "))
             except ValueError: pass
-        subtotal += data[x][2][choice]
+        subtotal, tempSaved = subtotal + data[x][2][choice] * (discount if x == 0 else 1), data[x][2][choice] * (1 - (discount if x == 0 else 1))
         purchase[x].append(choice), subPurchase[x].append(choice), print("\n")
         x += 2 if (x == 0 and choice >= 6) else 1
     tempSaved, total, saved = subtotal * (1 - discount), total + subtotal * discount, saved + (subtotal * (1 - discount))
-    [print("\n".join([("[{0}] {1} (%.2f$)" .format(data[x][0][i], data[x][1][i]) % data[x][2][i]) for i in subPurchase[x] if data[x][0][i] != "NONE"])) for x in range(len(subPurchase))]
-    print("Subtotal: %.2f$" % (subtotal * discount) + "\nSaved: %.2f$" % tempSaved)
+    print("\n".join([("\n".join([("[{0}] {1} (%.2f$)" .format(data[x][0][i], data[x][1][i]) % data[x][2][i]) for i in subPurchase[x] if data[x][0][i] != "NONE"])) for x in range(len(subPurchase))]) + "\nSubtotal: %.2f$" % (subtotal * discount) + ("\nSaved: %.2f$" % tempSaved))
     discount, exit = 0.9, input("\ntype 'y' to order another device with a 10% discount or anything else to exit: ") != 'y'
     print("\n\n")
 [print("\n".join([("[{0}] {1} (%.2f$)" .format(data[x][0][i], data[x][1][i]) % data[x][2][i]) for i in purchase[x] if data[x][0][i] != "NONE"])) for x in range(len(purchase))]

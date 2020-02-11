@@ -1,4 +1,3 @@
-__author__ = "https://github.com/Rilabeast"
 devices = [["BPCM", "BPSH", "RPSS", "RPLL", "YPLS", "YPLL", "RTMS", "RTML", "YTLM", "YTLL"],
            ["Compact", "Clam Shell", "RoboPhone - 5-inch screen and 64 GB memory", "RoboPhone - 6-inch screen and 256 GB memory", "Y-Phone Standard - 6-inch screen and 64 GB memory", "Y-Phone Deluxe - 6-inch screen and 128 GB memory", "RoboTab - 8-inch screen and 64 GB memory", "RoboTab - 10-inch screen and 128 GB memory", "Y-Tab Standard - 10-inch screen and 128 GB memory", "Y-Phone Deluxe - 10-inch screen and 256 GB memory"],
            [29.99, 49.99, 199.99, 499.99, 549.99, 649.99, 149.99, 299.99, 499.99, 599.99]] # [code], [description], [price]
@@ -25,6 +24,7 @@ exit = False
 while not exit:
     subPurchase = [[], [], [], []]
     subtotal = 0
+    tempSaved = 0
 
     for i in range(len(devices[0])):
         print("'{0}' : {1} ({2}$)" .format(i, devices[1][i], devices[2][i]))
@@ -35,7 +35,8 @@ while not exit:
             devChoice = int(input("Choice: "))
         except ValueError:
             pass
-    subtotal += devices[2][devChoice]
+    subtotal += devices[2][devChoice] * discount
+    tempSaved += devices[2][devChoice] * (1 - discount)
     purchase[0].append(devChoice)
     subPurchase[0].append(devChoice)
     print()
@@ -86,8 +87,8 @@ while not exit:
         purchase[3].append(1)
         subPurchase[3].append(1)
 
-    total += subtotal * discount
-    saved += subtotal * (1 - discount)
+    total += subtotal
+    saved += tempSaved
     discount = 0.9
     print("\n")
 
@@ -102,6 +103,8 @@ while not exit:
 
     for i in subPurchase[3]:
         print("[{0}] {1} ({2}$)" .format(charger[0][i], charger[1][i], charger[2][i]))
+
+    print("\nSubtotal: %.2f$" % subtotal + (("\nSaved: %.2f$" % tempSaved) if tempSaved != 0 else ""))
 
     exit = input("\n\ntype 'y' to order another device with a 10% discount or anything else to exit: ") != 'y'
     print("\n\n")

@@ -1,5 +1,5 @@
 ### 0478/21/PRE/M/J/20 ###
-__author__ = "https://github.com/Rilabeast"
+
 ## creating variables to store everything ##
 # variable that stores all of the data needed
 data = [[["BPCM", "BPSH", "RPSS", "RPLL", "YPLS", "YPLL", "RTMS", "RTML", "YTLM", "YTLL"], # [code]
@@ -22,14 +22,14 @@ data = [[["BPCM", "BPSH", "RPSS", "RPLL", "YPLS", "YPLL", "RTMS", "RTML", "YTLM"
          [19.99, 15.99, 35.98, 0]]] # [price]
         # charger options
 
-purchase = [[], [], [], []] # list of indexes of all items bought: [devices], [sim], [case], [charger]
-total = 0 # total cost
-saved = 0 # total money saved
-discount = 1 # discount, starts at 1 so that there is no decrease in price for first device
+purchase = [[], [], [], []] # list of positions [devices], [sim], [case], [charger]
+total = 0
+saved = 0
+discount = 1
 
-exit = False # variable for knowing whether the loop should repeat, repeats when it's false so initializing it as such so that it runs at least once
+exit = False
 while not exit:
-    subPurchase = [[], [], [], []] # 2D list for the indexes of the items bought: [devices], [sim], [case], [charger]
+    subPurchase = [[], [], [], []]
     subtotal = 0
     x = 0
     while x < len(data):
@@ -43,6 +43,8 @@ while not exit:
             except ValueError:
                 pass
         subtotal += data[x][2][choice]
+        subtotal = subtotal + data[x][2][choice] * (discount if x == 0 else 1)
+        tempSaved = data[x][2][choice] * (1 - (discount if x == 0 else 1))
         purchase[x].append(choice)
         subPurchase[x].append(choice)
         print()
@@ -58,7 +60,7 @@ while not exit:
             if data[x][0][i] != "NONE": print("[{0}] {1} (%.2f$)" .format(data[x][0][i], data[x][1][i]) % data[x][2][i])
 
     print("\nSubtotal: %.2f$" % (subtotal * discount))
-    print("Saved: %.2f$" % tempSaved)
+    if tempSaved != 0: print("Saved: %.2f$" % tempSaved)
 
     discount = 0.9
     exit = input("\n\ntype 'y' to order another device with a 10% discount or anything else to exit: ") != 'y'
