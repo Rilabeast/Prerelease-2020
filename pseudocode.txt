@@ -1,0 +1,63 @@
+// Made by github.com/Rilabeast
+code <- ["BPCM", "BPSH", "RPSS", "RPLL", "YPLS", "YPLL", "RTMS", "RTML", "YTLM", "YTLL", "SMNO", "SMPG", "CSST", "CSLX", "CGCR", "CGHM"]
+desc <- ["Compact", "Clam Shell", "RoboPhone - 5-inch screen and 64 GB memory", "RoboPhone - 6-inch screen and 256 GB memory", "Y-Phone Standard - 6-inch screen and 64 GB memory", "Y-Phone Deluxe - 6-inch screen and 128 GB memory", "RoboTab - 8-inch screen and 64 GB memory", "RoboTab - 10-inch screen and 128 GB memory", "Y-Tab Standard - 10-inch screen and 128 GB memory", "Y-Phone Deluxe - 10-inch screen and 256 GB memory", "SIM Free (no SIM card purchased)", "Pay As You Go (SIM card purchased)", "Standard", "Luxury", "Car", "Home"]
+price <- [29.99, 49.99, 199.99, 499.99, 549.99, 649.99, 149.99, 299.99, 499.99, 599.99, 0, 9.99, 0, 50, 19.99, 15.99]
+pos <- [[0, 10], [10, 12], [12, 14], [14, 16]]
+# 0-9 = dev, 10-11 = sim, 12-13 = case, 14-15 charger
+
+purchase <- []
+total <- 0
+saved <- 0
+discount <- 1
+
+exit <- False
+WHILE NOT exit
+    tempSaved <- 0
+    subPurchase <- []
+    subtotal <- 0
+    p <- 0
+    WHILE p < pos.LENGTH
+        FOR i <- pos[p][0] TO pos[p][1]
+            OUTPUT i - pos[p][0], desc[i], price[i]
+        NEXT i
+
+        c <- -1
+        WHILE c < pos[p][0] OR c >= pos[p][1]:
+            INPUT c
+            c <- c + pos[p][0]
+        ENDWHILE
+
+        IF p = 0 THEN
+            subtotal <- subtotal + price[c] * discount
+            tempSaved <- tempSaved + price[c] * (1 - discount)
+        ELSE
+            subtotal <- subtotal + price[c]
+        ENDIF
+
+        purchase.append(c)
+        subPurchase.append(c)
+
+        IF p = 0 AND c >= 6 THEN
+            p += 2
+        ELSE
+            p += 1
+        ENDIF
+
+    total <- total + subtotal
+    saved <- saved + tempSaved
+    discount <- 0.9
+
+    FOR i <- 0 TO subPurchase.length
+        x <- subPurchase[i]
+        OUTPUT code[x], desc[x], price[x]
+    NEXT i
+
+    INPUT c
+    exit <- (c != 'y')
+
+FOR i <- 0 TO purchase.length
+    x <- subPurchase[i]
+    OUTPUT code[i], desc[i], price[i]
+NEXT i
+
+OUTPUT total, saved
